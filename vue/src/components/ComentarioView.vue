@@ -4,7 +4,8 @@
     <transition name="modal-fade">
         <div class="modal-backdrop">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-            <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+            <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription"
+                @mouseenter="setStars">
                 <header class="modal-header" id="modalTitle">
                     <slot name="header">
                         <h2>Avaliação - {{ getItem('quartoSelect') }}</h2>
@@ -18,7 +19,7 @@
                     <slot name="body">
                         <div class="comment-quarto">
                             <form>
-                                <div class="quarto-img-stars" id="stars">
+                                <div class="quarto-modal-stars" id="modal-stars">
                                     <span class="starModal" id="star1" @click="onClick($event)">&#xe838;</span>
                                     <span class="starModal" id="star2" @click="onClick($event)">&#xe838;</span>
                                     <span class="starModal" id="star3" @click="onClick($event)">&#xe838;</span>
@@ -52,11 +53,9 @@ function onClick(event) {
     for (let i = 0; i < stars.length; i++) {
         stars[i].style.color = 'white';
     }
-    for (let i = 0; i < starIndex - 1; i++) {
+    for (let i = 0; i < starIndex; i++) {
         stars[i].style.color = 'yellow';
     }
-
-    star.style.color = "yellow"
 
     localStorage.setItem('qntdStars', starIndex);
     document.getElementById('resumoStars').innerText = `${starIndex} estrelas!`;
@@ -67,7 +66,7 @@ var getSiblings = function (elem) {
     var sibling = elem.parentNode.firstChild;
 
     while (sibling) {
-        if (sibling.nodeType === 1 && sibling !== elem) {
+        if (sibling.nodeType === 1) {
             siblings.push(sibling);
         }
         sibling = sibling.nextSibling
@@ -77,26 +76,20 @@ var getSiblings = function (elem) {
 };
 
 function setStars() {
-    /* let starIndex = localStorage.getItem('qntdStars') - 1;
-     let parent = document.getElementById('stars');
-     var siblings = [];
-     var sibling = parent.firstChild;
- 
-     while (sibling) {
-         if (sibling.nodeType === 1) {
-             siblings.push(sibling);
-         }
-         sibling = sibling.nextSibling
-     }
- 
-     for (let i = starIndex; i < starIndex; i++) {
-         siblings[i].style.color = 'yellow';
-     }*/
+    let cStarNum = localStorage.getItem('qntdStars');
+    let cStars = document.getElementById('modal-stars');
+
+    let stars = getSiblings(cStars.firstChild);
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].style.color = 'white';
+    }
+    for (let i = 0; i < cStarNum; i++) {
+        stars[i].style.color = 'yellow';
+    }
 }
 
 export default {
     name: 'ComentarioView',
-    created: setStars,
     data: function () {
         return {
             onClick: onClick,
@@ -141,7 +134,7 @@ export default {
     outline: none;
 }
 
-.quarto-img-stars {
+.quarto-modal-stars {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
