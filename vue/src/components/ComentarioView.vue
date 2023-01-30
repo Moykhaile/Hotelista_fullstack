@@ -30,12 +30,10 @@
                                 <h2>Deixe um comentário na sua avaliação!</h2>
                                 <textarea placeholder="Deixe seu comentário..." name="comentarioTxt" id="comentarioTxt"
                                     cols="30" rows="50"></textarea>
-                                <div class="button-wrap">
-                                    <a class="button">
-                                        <div class="button-text">Envie sua avaliação</div>
-                                        <p class="button-arrow">→</p>
-                                    </a>
-                                </div>
+                                <button class="button" value="Continuar" @click="enviarComentario($event)">
+                                    <div class="button-text">Continuar</div>
+                                    <p class="button-arrow">→</p>
+                                </button>
                             </form>
                         </div>
                     </slot>
@@ -45,6 +43,8 @@
     </transition>
 </template>
 <script>
+import { json } from 'body-parser';
+
 function onClick(event) {
     let star = event.target;
     let starIndex = star.id.replace('star', '');
@@ -88,6 +88,16 @@ function setStars() {
     }
 }
 
+function makeautor() {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ';
+    var charactersLength = characters.length;
+    for (var i = 0; i < 10; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
 export default {
     name: 'ComentarioView',
     data: function () {
@@ -102,6 +112,33 @@ export default {
         },
         getItem(item) {
             return localStorage.getItem(item)
+        },
+        enviarComentario(e) {
+            e.preventDefault();
+
+            let textArea = document.getElementById('comentarioTxt');
+
+            let comentario = { stars: localStorage.getItem('qntdStars'), txt: textArea.value }
+            console.log(comentario);
+
+            let quarto = localStorage.getItem('quartoSelect');
+            if (localStorage.getItem('comentarios')) {
+                let comentarios = JSON.parse(localStorage.getItem('comentarios'));
+
+                comentarios[quarto][makeautor()] = comentario;
+
+                localStorage.setItem('comentarios', comentarios);
+            }
+            else {
+                let autor = makeautor();
+                let comentarios = [quarto][autor];
+
+                comentarios[quarto][autor] = comentario;
+
+                localStorage.setItem('comentarios', comentarios);
+            }
+
+            this.$router.push({ path: '/comentarios', query: { quarto: localStorage.getItem('quartoSelect') } });
         }
     }
 };
@@ -162,47 +199,13 @@ export default {
     color: yellow;
 }
 
-.button-wrap {
-    margin: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+form {
+    margin: 0 15%
 }
 
-.button {
-    display: flex;
-    padding: 1.5em 2.5em;
-    align-items: center;
-    text-align: center;
-    flex: 0 0 auto;
-    text-decoration: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: 1px solid #e0e0e0;
-    justify-content: center;
-    max-width: 50%;
-    transition: 0.5s;
-}
-
-.button:hover {
-    border-color: #c0c0c0;
-}
-
-.button-text {
-    color: #333333;
-    text-align: center;
-    display: block;
-}
-
-.button-arrow {
-    display: inline;
-    padding-left: 1em;
-    transition: 0.5s;
-    margin: 0;
-}
-
-.button:hover .button-arrow {
-    transform: translate3d(1em, 0, 0);
+button.button {
+    max-width: 100%;
+    width: 100%;
 }
 
 .modal-backdrop {
