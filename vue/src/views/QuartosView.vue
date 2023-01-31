@@ -1,217 +1,218 @@
 <template>
+    <html>
+        <head>
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        </head>
+        <main>
+            <section class="banner-section">
+                <div class="hero">
+                    <h1 class="hero-titulo banner-titulo black">Sua melhor escolha de vista</h1>
+                </div>
+                <div>
+                    <div id="banner" class="headBanner"></div>
+                </div>
+            </section>
+            <hr />
+            <section>
+                <h1>Nossas acomodações</h1>
+                <div class="quartos">
+                    <h1>Quarto Simples</h1>
+                    <div class="quarto">
+                        <div class="quarto-wrap">
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoSimples" alt="Quarto Simples 1">
 
-    <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    </head>
-    <main>
-        <section class="banner-section">
-            <div class="hero">
-                <h1 class="hero-titulo banner-titulo black">Sua melhor escolha de vista</h1>
-            </div>
-            <div>
-                <div id="banner" class="headBanner"></div>
-            </div>
-        </section>
-        <hr />
-        <section>
-            <h1>Nossas acomodações</h1>
-            <div class="quartos">
-                <h1>Quarto Simples</h1>
-                <div class="quarto">
-                    <div class="quarto-wrap">
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoSimples" alt="Quarto Simples 1">
-
-                        </div>
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoSimples2" alt="Quarto Simples 2">
-                        </div>
-                        <div class="quarto-img-wrap">
-                            <img :src="imageBanheiro" alt="Quarto Simples 3">
-                        </div>
-                        <div class="quarto-img-info-conteiner">
-                            <div class="quarto-img-info-wrap">
-                                <div class="quarto-img-info">Lorem ipsum dolor sit amet consectetur adipisicing
-                                    elit.
-                                    Necessitatibus nisi vitae soluta eius voluptate tenetur vel ex, sint distinctio.
-                                    Eos
-                                    sapiente rerum molestias, in asperiores voluptatibus minima quidem provident
-                                    dolor?
-                                    Quae
-                                    id laborum harum nam ab culpa officia magnam alias modi architecto? Libero,
-                                    cupiditate
-                                    alias reiciendis vel dolor architecto possimus.</div>
-                                <div class="quarto-img-list">
-                                    <ul>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                </div>
                             </div>
-                            <div class="quarto-img-stars-wrap">
-                                <div class="quarto-img-stars-titulo">Deixe sua avaliação do quarto:</div>
-                                <div class="quarto-img-stars" id="stars">
-                                    <span class="star" id="star1" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(1, 'Quarto Simples')">&#xe838;</span>
-                                    <span class="star" id="star2" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(2, 'Quarto Simples')">&#xe838;</span>
-                                    <span class="star" id="star3" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(3, 'Quarto Simples')">&#xe838;</span>
-                                    <span class="star" id="star4" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(4, 'Quarto Simples')">&#xe838;</span>
-                                    <span class="star" id="star5" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(5, 'Quarto Simples')">&#xe838;</span>
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoSimples2" alt="Quarto Simples 2">
+                            </div>
+                            <div class="quarto-img-wrap">
+                                <img :src="imageBanheiro" alt="Quarto Simples 3">
+                            </div>
+                            <div class="quarto-img-info-conteiner">
+                                <div class="quarto-img-info-wrap">
+                                    <div class="quarto-img-info">Lorem ipsum dolor sit amet consectetur adipisicing
+                                        elit.
+                                        Necessitatibus nisi vitae soluta eius voluptate tenetur vel ex, sint distinctio.
+                                        Eos
+                                        sapiente rerum molestias, in asperiores voluptatibus minima quidem provident
+                                        dolor?
+                                        Quae
+                                        id laborum harum nam ab culpa officia magnam alias modi architecto? Libero,
+                                        cupiditate
+                                        alias reiciendis vel dolor architecto possimus.</div>
+                                    <div class="quarto-img-list">
+                                        <ul>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <a>Ver avaliações do quarto</a>
+                                <div class="quarto-img-stars-wrap">
+                                    <div class="quarto-img-stars-titulo">Deixe sua avaliação do quarto:</div>
+                                    <div class="quarto-img-stars" id="stars">
+                                        <span class="star" id="star1" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(1, 'Quarto Simples')">&#xe838;</span>
+                                        <span class="star" id="star2" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(2, 'Quarto Simples')">&#xe838;</span>
+                                        <span class="star" id="star3" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(3, 'Quarto Simples')">&#xe838;</span>
+                                        <span class="star" id="star4" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(4, 'Quarto Simples')">&#xe838;</span>
+                                        <span class="star" id="star5" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(5, 'Quarto Simples')">&#xe838;</span>
+                                    </div>
+                                    <a>Ver avaliações do quarto</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <h1>Quarto Médio</h1>
-                <div class="quarto">
-                    <div class="quarto-wrap">
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoMedio" alt="Quarto Médio 1">
+                    <h1>Quarto Médio</h1>
+                    <div class="quarto">
+                        <div class="quarto-wrap">
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoMedio" alt="Quarto Médio 1">
 
-                        </div>
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoMedio2" alt="Quarto Médio 2">
-                        </div>
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoMedio3" alt="Quarto Médio 3">
-                        </div>
-                        <div class="quarto-img-info-conteiner">
-                            <div class="quarto-img-info-wrap">
-                                <div class="quarto-img-info">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                                    Et,
-                                    vitae. Aperiam quos dolorem error. Quibusdam exercitationem nihil alias facere aut
-                                    minus
-                                    sit quam consequatur possimus dignissimos! Architecto id voluptatem amet maxime cum
-                                    deleniti recusandae, quos eius deserunt aut soluta inventore a facilis tempore
-                                    dignissimos similique doloremque expedita reiciendis provident magnam.</div>
-                                <div class="quarto-img-list">
-                                    <ul>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                </div>
                             </div>
-                            <div class="quarto-img-stars-wrap">
-                                <div class="quarto-img-stars-titulo">Deixe sua avaliação do quarto:</div>
-                                <div class="quarto-img-stars" id="stars">
-                                    <span class="star" id="star1" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(1, 'Quarto Médio')">&#xe838;</span>
-                                    <span class="star" id="star2" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(2, 'Quarto Médio')">&#xe838;</span>
-                                    <span class="star" id="star3" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(3, 'Quarto Médio')">&#xe838;</span>
-                                    <span class="star" id="star4" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(4, 'Quarto Médio')">&#xe838;</span>
-                                    <span class="star" id="star5" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(5, 'Quarto Médio')">&#xe838;</span>
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoMedio2" alt="Quarto Médio 2">
+                            </div>
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoMedio3" alt="Quarto Médio 3">
+                            </div>
+                            <div class="quarto-img-info-conteiner">
+                                <div class="quarto-img-info-wrap">
+                                    <div class="quarto-img-info">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                        Et,
+                                        vitae. Aperiam quos dolorem error. Quibusdam exercitationem nihil alias facere aut
+                                        minus
+                                        sit quam consequatur possimus dignissimos! Architecto id voluptatem amet maxime cum
+                                        deleniti recusandae, quos eius deserunt aut soluta inventore a facilis tempore
+                                        dignissimos similique doloremque expedita reiciendis provident magnam.</div>
+                                    <div class="quarto-img-list">
+                                        <ul>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <a>Ver avaliações do quarto</a>
+                                <div class="quarto-img-stars-wrap">
+                                    <div class="quarto-img-stars-titulo">Deixe sua avaliação do quarto:</div>
+                                    <div class="quarto-img-stars" id="stars">
+                                        <span class="star" id="star1" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(1, 'Quarto Médio')">&#xe838;</span>
+                                        <span class="star" id="star2" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(2, 'Quarto Médio')">&#xe838;</span>
+                                        <span class="star" id="star3" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(3, 'Quarto Médio')">&#xe838;</span>
+                                        <span class="star" id="star4" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(4, 'Quarto Médio')">&#xe838;</span>
+                                        <span class="star" id="star5" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(5, 'Quarto Médio')">&#xe838;</span>
+                                    </div>
+                                    <a>Ver avaliações do quarto</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <h1>Quarto de Luxo</h1>
-                <div class="quarto">
-                    <div class="quarto-wrap">
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoLuxo" alt="Quarto de Luxo 1">
-
-                        </div>
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoLuxo2" alt="Quarto de Luxo 2">
-                        </div>
-                        <div class="quarto-img-wrap">
-                            <img :src="imageQuartoLuxo3" alt="Quarto de Luxo 3">
-                        </div>
-                        <div class="quarto-img-info-conteiner">
-                            <div class="quarto-img-info-wrap">
-                                <div class="quarto-img-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Ipsa
-                                    dicta pariatur totam incidunt eos libero deserunt earum possimus autem aliquid, quam
-                                    enim quo voluptate consequuntur error dolores vero voluptates perferendis!
-                                    Cupiditate
-                                    consequatur, magnam quae vero nobis sed iure! Porro ipsam consequuntur recusandae
-                                    non
-                                    quo error tempore, optio ipsum iste incidunt!</div>
-                                <div class="quarto-img-list">
-                                    <ul>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                        <li>Lorem ipsum dolor sit amet.</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="quarto-img-stars-wrap">
-                                <div class="quarto-img-stars-titulo">Deixe sua avaliação do quarto:</div>
-                                <div class="quarto-img-stars" id="stars">
-                                    <span class="star" id="star1" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(1, 'Quarto de Luxo')">&#xe838;</span>
-                                    <span class="star" id="star2" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(2, 'Quarto de Luxo')">&#xe838;</span>
-                                    <span class="star" id="star3" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(3, 'Quarto de Luxo')">&#xe838;</span>
-                                    <span class="star" id="star4" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(4, 'Quarto de Luxo')">&#xe838;</span>
-                                    <span class="star" id="star5" @mouseover="mouseOver($event);"
-                                        @mouseout="mouseOut($event);"
-                                        @click="showModal(5, 'Quarto de Luxo')">&#xe838;</span>
-                                </div>
-                                <a>Ver avaliações do quarto</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ComentarioView v-show="isModalViewVisible" @close="closeModal" />
-        </section>
-
-        <section>
-            <h1>Quarto em Destaque</h1>
-            <div class="quarto-destaque">
-                <img :src="imageQuartoLuxo" alt="Quarto em destaque: Quarto de Luxo">
-                <div class="quarto-destaque-info">
                     <h1>Quarto de Luxo</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, exercitationem, quod
-                        asperiores aspernatur maiores a placeat vitae fugiat iste architecto quasi. Accusamus
-                        provident
-                        similique quam temporibus, veniam dolorum beatae molestias nobis mollitia magnam est tempore
-                        debitis quae, vitae qui fugiat obcaecati! Explicabo quis totam doloremque voluptates.
-                        Expedita
-                        accusamus quo quaerat natus distinctio? Veritatis quis aperiam dolore iste magnam corrupti
-                        ducimus quia distinctio, quisquam officiis autem repudiandae pariatur. Laborum quasi nam
-                        modi
-                        nulla voluptatum esse accusamus.</p>
+                    <div class="quarto">
+                        <div class="quarto-wrap">
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoLuxo" alt="Quarto de Luxo 1">
+
+                            </div>
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoLuxo2" alt="Quarto de Luxo 2">
+                            </div>
+                            <div class="quarto-img-wrap">
+                                <img :src="imageQuartoLuxo3" alt="Quarto de Luxo 3">
+                            </div>
+                            <div class="quarto-img-info-conteiner">
+                                <div class="quarto-img-info-wrap">
+                                    <div class="quarto-img-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Ipsa
+                                        dicta pariatur totam incidunt eos libero deserunt earum possimus autem aliquid, quam
+                                        enim quo voluptate consequuntur error dolores vero voluptates perferendis!
+                                        Cupiditate
+                                        consequatur, magnam quae vero nobis sed iure! Porro ipsam consequuntur recusandae
+                                        non
+                                        quo error tempore, optio ipsum iste incidunt!</div>
+                                    <div class="quarto-img-list">
+                                        <ul>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                            <li>Lorem ipsum dolor sit amet.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="quarto-img-stars-wrap">
+                                    <div class="quarto-img-stars-titulo">Deixe sua avaliação do quarto:</div>
+                                    <div class="quarto-img-stars" id="stars">
+                                        <span class="star" id="star1" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(1, 'Quarto de Luxo')">&#xe838;</span>
+                                        <span class="star" id="star2" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(2, 'Quarto de Luxo')">&#xe838;</span>
+                                        <span class="star" id="star3" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(3, 'Quarto de Luxo')">&#xe838;</span>
+                                        <span class="star" id="star4" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(4, 'Quarto de Luxo')">&#xe838;</span>
+                                        <span class="star" id="star5" @mouseover="mouseOver($event);"
+                                            @mouseout="mouseOut($event);"
+                                            @click="showModal(5, 'Quarto de Luxo')">&#xe838;</span>
+                                    </div>
+                                    <a>Ver avaliações do quarto</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </main>
+                <ComentarioView v-show="isModalViewVisible" @close="closeModal" />
+            </section>
+
+            <section>
+                <h1>Quarto em Destaque</h1>
+                <div class="quarto-destaque">
+                    <img :src="imageQuartoLuxo" alt="Quarto em destaque: Quarto de Luxo">
+                    <div class="quarto-destaque-info">
+                        <h1>Quarto de Luxo</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci, exercitationem, quod
+                            asperiores aspernatur maiores a placeat vitae fugiat iste architecto quasi. Accusamus
+                            provident
+                            similique quam temporibus, veniam dolorum beatae molestias nobis mollitia magnam est tempore
+                            debitis quae, vitae qui fugiat obcaecati! Explicabo quis totam doloremque voluptates.
+                            Expedita
+                            accusamus quo quaerat natus distinctio? Veritatis quis aperiam dolore iste magnam corrupti
+                            ducimus quia distinctio, quisquam officiis autem repudiandae pariatur. Laborum quasi nam
+                            modi
+                            nulla voluptatum esse accusamus.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </html>
 </template>
 
 <script>
