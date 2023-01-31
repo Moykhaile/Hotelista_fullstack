@@ -10,7 +10,8 @@
     "@popperjs/core": "^2.11.6",
     "core-js": "^3.8.3",
     "vue-router": "^4.0.3",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.0",
+    "zlib": "^1.0.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",

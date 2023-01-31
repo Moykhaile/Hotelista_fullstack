@@ -266,10 +266,10 @@ import imageQuartoLuxo3 from "../assets/quartos/luxo3.png"
 
 import ComentarioView from "../components/ComentarioView.vue";
 
-/*if (localStorage.getItem('quartoSelect'))
+if (localStorage.getItem('quartoSelect'))
     localStorage.removeItem('quartoSelect');
 if (localStorage.getItem('qntdStars'))
-    localStorage.removeItem('qntdStars');*/
+    localStorage.removeItem('qntdStars');
 
 export default {
     data: function () {

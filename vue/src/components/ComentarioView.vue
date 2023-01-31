@@ -2,7 +2,8 @@
     <transition name="modal-fade">
         <div class="modal-backdrop">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-            <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+            <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription"
+                @mouseenter="setStars">
                 <header class="modal-header" id="modalTitle">
                     <slot name="header">
                         <h2>Avaliação - {{ getItem('quartoSelect') }}</h2>
@@ -16,7 +17,7 @@
                     <slot name="body">
                         <div class="comment-quarto">
                             <form>
-                                <div class="quarto-img-stars" id="stars">
+                                <div class="quarto-modal-stars" id="modal-stars">
                                     <span class="starModal" id="star1" @click="onClick($event)">&#xe838;</span>
                                     <span class="starModal" id="star2" @click="onClick($event)">&#xe838;</span>
                                     <span class="starModal" id="star3" @click="onClick($event)">&#xe838;</span>
@@ -27,12 +28,10 @@
                                 <h2>Deixe um comentário na sua avaliação!</h2>
                                 <textarea placeholder="Deixe seu comentário..." name="comentarioTxt" id="comentarioTxt"
                                     cols="30" rows="50"></textarea>
-                                <div class="button-wrap">
-                                    <a class="button">
-                                        <div class="button-text">Envie sua avaliação</div>
-                                        <p class="button-arrow">→</p>
-                                    </a>
-                                </div>
+                                <button class="button" value="Continuar" @click="enviarComentario($event)">
+                                    <div class="button-text">Continuar</div>
+                                    <p class="button-arrow">→</p>
+                                </button>
                             </form>
                         </div>
                     </slot>
@@ -42,6 +41,8 @@
     </transition>
 </template>
 <script>
+import { json } from 'body-parser';
+
 function onClick(event) {
     let star = event.target;
     let starIndex = star.id.replace('star', '');
@@ -50,11 +51,9 @@ function onClick(event) {
     for (let i = 0; i < stars.length; i++) {
         stars[i].style.color = 'white';
     }
-    for (let i = 0; i < starIndex - 1; i++) {
+    for (let i = 0; i < starIndex; i++) {
         stars[i].style.color = 'yellow';
     }
-
-    star.style.color = "yellow"
 
     localStorage.setItem('qntdStars', starIndex);
     document.getElementById('resumoStars').innerText = `${starIndex} estrelas!`;
@@ -65,7 +64,7 @@ var getSiblings = function (elem) {
     var sibling = elem.parentNode.firstChild;
 
     while (sibling) {
-        if (sibling.nodeType === 1 && sibling !== elem) {
+        if (sibling.nodeType === 1) {
             siblings.push(sibling);
         }
         sibling = sibling.nextSibling
@@ -75,26 +74,30 @@ var getSiblings = function (elem) {
 };
 
 function setStars() {
-    /* let starIndex = localStorage.getItem('qntdStars') - 1;
-     let parent = document.getElementById('stars');
-     var siblings = [];
-     var sibling = parent.firstChild;
- 
-     while (sibling) {
-         if (sibling.nodeType === 1) {
-             siblings.push(sibling);
-         }
-         sibling = sibling.nextSibling
-     }
- 
-     for (let i = starIndex; i < starIndex; i++) {
-         siblings[i].style.color = 'yellow';
-     }*/
+    let cStarNum = localStorage.getItem('qntdStars');
+    let cStars = document.getElementById('modal-stars');
+
+    let stars = getSiblings(cStars.firstChild);
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].style.color = 'white';
+    }
+    for (let i = 0; i < cStarNum; i++) {
+        stars[i].style.color = 'yellow';
+    }
+}
+
+function makeautor() {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ';
+    var charactersLength = characters.length;
+    for (var i = 0; i < 10; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
 }
 
 export default {
     name: 'ComentarioView',
-    created: setStars,
     data: function () {
         return {
             onClick: onClick,
@@ -107,6 +110,33 @@ export default {
         },
         getItem(item) {
             return localStorage.getItem(item)
+        },
+        enviarComentario(e) {
+            e.preventDefault();
+
+            let textArea = document.getElementById('comentarioTxt');
+
+            let comentario = { stars: localStorage.getItem('qntdStars'), txt: textArea.value }
+            console.log(comentario);
+
+            let quarto = localStorage.getItem('quartoSelect');
+            if (localStorage.getItem('comentarios')) {
+                let comentarios = JSON.parse(localStorage.getItem('comentarios'));
+
+                comentarios[quarto][makeautor()] = comentario;
+
+                localStorage.setItem('comentarios', comentarios);
+            }
+            else {
+                let autor = makeautor();
+                let comentarios = [quarto][autor];
+
+                comentarios[quarto][autor] = comentario;
+
+                localStorage.setItem('comentarios', comentarios);
+            }
+
+            this.$router.push({ path: '/comentarios', query: { quarto: localStorage.getItem('quartoSelect') } });
         }
     }
 };
@@ -139,7 +169,7 @@ export default {
     outline: none;
 }
 
-.quarto-img-stars {
+.quarto-modal-stars {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -167,47 +197,13 @@ export default {
     color: yellow;
 }
 
-.button-wrap {
-    margin: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+form {
+    margin: 0 15%
 }
 
-.button {
-    display: flex;
-    padding: 1.5em 2.5em;
-    align-items: center;
-    text-align: center;
-    flex: 0 0 auto;
-    text-decoration: none;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: 1px solid #e0e0e0;
-    justify-content: center;
-    max-width: 50%;
-    transition: 0.5s;
-}
-
-.button:hover {
-    border-color: #c0c0c0;
-}
-
-.button-text {
-    color: #333333;
-    text-align: center;
-    display: block;
-}
-
-.button-arrow {
-    display: inline;
-    padding-left: 1em;
-    transition: 0.5s;
-    margin: 0;
-}
-
-.button:hover .button-arrow {
-    transform: translate3d(1em, 0, 0);
+button.button {
+    max-width: 100%;
+    width: 100%;
 }
 
 .modal-backdrop {
