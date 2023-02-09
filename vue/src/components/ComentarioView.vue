@@ -41,8 +41,6 @@
     </transition>
 </template>
 <script>
-import { json } from 'body-parser';
-
 function onClick(event) {
     let star = event.target;
     let starIndex = star.id.replace('star', '');
@@ -114,7 +112,7 @@ export default {
         enviarComentario(e) {
             e.preventDefault();
 
-            let textArea = document.getElementById('comentarioTxt');
+            /*let textArea = document.getElementById('comentarioTxt');
 
             let comentario = { stars: localStorage.getItem('qntdStars'), txt: textArea.value }
             console.log(comentario);
@@ -134,7 +132,7 @@ export default {
                 comentarios[quarto][autor] = comentario;
 
                 localStorage.setItem('comentarios', comentarios);
-            }
+            }*/
 
             this.$router.push({ path: '/comentarios', query: { quarto: localStorage.getItem('quartoSelect') } });
         }
