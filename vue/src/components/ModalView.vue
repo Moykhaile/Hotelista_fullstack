@@ -31,20 +31,20 @@
 						<div>
 							<input class="reservas-margin-servicos" type="checkbox" id="servico01" name="servicos"
 								onClick="servicos()">
-							<label for="servico01">R$ <span name="servicoValor" id="pPessoa">20,50</span> - <span
-									name="servicoNome">Café da manhã</span>*</label>
+							<label for="servico01">R$ <span name="servicoValor" id="pPessoa">80,00</span> - <span
+									name="servicoNome">Pacote Streaming</span>*</label>
 						</div>
 						<div>
 							<input class="reservas-margin-servicos" type="checkbox" id="servico02" name="servicos"
 								onClick="servicos()">
-							<label for="servico02">R$ <span name="servicoValor" id="pPessoa">30,00</span> - <span
-									name="servicoNome">Almoço</span>*</label>
+							<label for="servico02">R$ <span name="servicoValor" id="pPessoa">40,00</span> - <span
+									name="servicoNome">Lavanderia</span>*</label>
 						</div>
 						<div>
 							<input class="reservas-margin-servicos" type="checkbox" id="servico03" name="servicos"
 								onClick="servicos()">
-							<label for="servico03">R$ <span name="servicoValor" id="pPessoa">40,00</span> - <span
-									name="servicoNome">Jantar</span>*</label>
+							<label for="servico03">R$ <span name="servicoValor" id="pPessoa">20,00</span> - <span
+									name="servicoNome">Cofre</span></label>
 						</div>
 						<div>
 							<input class="reservas-margin-servicos" type="checkbox" id="servico04" name="servicos"
@@ -56,9 +56,9 @@
 							<input class="reservas-margin-servicos" type="checkbox" id="servico05" name="servicos"
 								onClick="servicos()">
 							<label for="servico05">R$ <span name="servicoValor" id="pPessoa">50,00</span> - <span
-									name="servicoNome">Frigobar com variedades</span>*</label>
+									name="servicoNome">Hotelzinho Pet</span></label>
 						</div>
-						<p><b>*valores por pessoa, exceto limpeza diária.</b></p>
+						<p><b>*valores por pessoa.</b></p>
 						<h3 id="totalServicos">Subtotal serviços: R$ 0,00</h3>
 					</div>
           </slot>
