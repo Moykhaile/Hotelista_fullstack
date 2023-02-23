@@ -114,27 +114,24 @@ export default {
         enviarComentario(e) {
             e.preventDefault();
 
-            /*let textArea = document.getElementById('comentarioTxt');
+            let textArea = document.getElementById('comentarioTxt');
 
-            let comentario = { stars: localStorage.getItem('qntdStars'), txt: textArea.value }
-            console.log(comentario);
-
+            let autor = makeautor();
+            let comentario = [localStorage.getItem('qntdStars'), textArea.value, autor];
             let quarto = localStorage.getItem('quartoSelect');
-            if (localStorage.getItem('comentarios')) {
-                let comentarios = JSON.parse(localStorage.getItem('comentarios'));
 
-                comentarios[quarto][makeautor()] = comentario;
+            if (localStorage.getItem(quarto)) {
+                let comentarios = JSON.parse(localStorage.getItem(quarto));
 
-                localStorage.setItem('comentarios', comentarios);
+                comentarios.push(comentario);
+
+                localStorage.setItem(quarto, JSON.stringify(comentarios));
             }
             else {
-                let autor = makeautor();
-                let comentarios = [quarto][autor];
+                let comentarios = [comentario];
 
-                comentarios[quarto][autor] = comentario;
-
-                localStorage.setItem('comentarios', comentarios);
-            }*/
+                localStorage.setItem(quarto, JSON.stringify(comentarios));
+            }
 
             this.$router.push({ path: '/comentarios', query: { quarto: localStorage.getItem('quartoSelect') } });
         }
