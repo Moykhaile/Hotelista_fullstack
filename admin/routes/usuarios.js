@@ -14,11 +14,5 @@ router.get('/usuario',showUsers)
 router.get('/usuario/:id',showUsersById)
 router.post('/usuario', createUsers)
 
-/*
-router.post('/insert', async(req,res)=>{
-    res.writeHead(200,{'Content-Type':'application/json;charset=utf-8'})
-    res.end('', await login.insereTeste(req.body))
-})
-*/
 export default router
 

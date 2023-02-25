@@ -18,7 +18,7 @@ export const usersById = (idUsuario,result) => {
     conn.query('SELECT * FROM Usuario WHERE idUsuario=?', [idUsuario],
     (erro, results)=>{
         if (erro){
-            console.lof(erro)
+            console.log(erro)
             result(erro,null)
         }else{
             result(null,results[0])
@@ -37,9 +37,7 @@ export const insertUsers = (dados, result)=>{
             console.log(erro)
             result(erro,null)
         }else{
-            result(null,results[0])
+            result(null,results)
         }
     })
-    console.log('Post/insere ok!',values)
 }
-
