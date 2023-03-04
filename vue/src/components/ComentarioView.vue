@@ -1,6 +1,4 @@
 <template>
-
-
     <transition name="modal-fade">
         <div class="modal-backdrop">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
